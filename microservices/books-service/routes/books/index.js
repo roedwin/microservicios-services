@@ -37,14 +37,62 @@ router.get("/title/:title", (req, res) => {
 router.get("/author/:author", async(req, res) => {
   const author = await fetch(`http://authors:3000/api/v2/authors/${req.params.author}/`).then(response => response.json());
 
-  const books = data.dataLibrary.books;
-
-  const filtroLibros = books.filter(book => book.authorid === author.data[0].id);
+  const filtroLibros = data.dataLibrary.books.filter(book => book.authorid === author.data[0].id);
 
   const response = {
     respuesta: filtroLibros
   };
+  return res.send(response);
+});
 
+router.get("/betYears", async(req, res) => {
+  const { primerAnnio, ultimoAnnio } = req.query;
+
+  const books = data.dataLibrary.books.filter(book => {
+    return book.year >= primerAnnio && book.year <= ultimoAnnio
+  });
+
+  const response = {
+    respuesta: books
+  };
+  return res.send(response);
+});
+router.get("/minusYears", async(req, res) => {
+  const { annio } = req.query;
+  
+  const books = data.dataLibrary.books.filter(book => {
+    return book.year <= annio
+  });
+
+  const response = {
+    respuesta: books
+  };
+  return res.send(response);
+});
+
+router.get("/plusYears", async(req, res) => {
+  const { annio } = req.query;
+  
+  const books = data.dataLibrary.books.filter(book => {
+    return book.year >= annio
+  });
+
+  const response = {
+    respuesta: books
+  };
+  return res.send(response);
+});
+
+router.get("/equalYears", async(req, res) => {
+  const { annio } = req.query;
+  
+  const books = data.dataLibrary.books.filter(book => {
+    return book.year === parseInt(annio)
+  });
+
+  const response = {
+    respuesta: books
+  };
   return res.send(response);
 });
 
