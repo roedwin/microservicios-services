@@ -59,6 +59,16 @@ router.get("/author/:name", (req, res) => {
   return res.send(response);
 });
 
+router.get("/country/:country", (req, res) => {
+
+  const author = data.dataLibrary.authors.filter(author => author.country.includes(req.params.country))
+
+  const response = {
+    data: author,
+  };
+  return res.send(response);
+});
+
 // Exportamos el objeto Router
 module.exports = router;
 

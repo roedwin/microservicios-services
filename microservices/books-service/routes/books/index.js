@@ -1,7 +1,7 @@
 const express = require("express"); // importa Express
 const router = express.Router(); // crea un nuevo enrutador de Express
 const data = require("../../data/data-library"); // importa los datos de data-library
-const fetch = require("node-fetch")
+const fetch = require("node-fetch");
 
 const logger = (message) => console.log(`Author Services: ${message}`);
 
@@ -34,6 +34,17 @@ router.get("/title/:title", (req, res) => {
   return res.send(response); // devuelve la respuesta al cliente
 });
 
+router.get("/distributedCountries/:country", (req, res) => {
+  const country = req.params.country;
+  const filteredBooks = data.dataLibrary.books.filter((book) =>
+    book.distributedCountries.includes(country)
+  );
+  const response = {
+    respuesta: filteredBooks
+  };
+  return res.send(response);
+});
+//localhost:8080/api/v2/books/author/parametro
 router.get("/author/:author", async(req, res) => {
   const author = await fetch(`http://authors:3000/api/v2/authors/${req.params.author}/`).then(response => response.json());
 
@@ -44,13 +55,11 @@ router.get("/author/:author", async(req, res) => {
   };
   return res.send(response);
 });
-
+//localhost:8080/api/v2/books/betYears?variable1=parametro1&variable2=parametro2
 router.get("/betYears", async(req, res) => {
   const { primerAnnio, ultimoAnnio } = req.query;
 
-  const books = data.dataLibrary.books.filter(book => {
-    return book.year >= primerAnnio && book.year <= ultimoAnnio
-  });
+  const books = data.dataLibrary.books.filter(book => book.year >= primerAnnio && book.year <= ultimoAnnio);
 
   const response = {
     respuesta: books
@@ -92,6 +101,16 @@ router.get("/equalYears", async(req, res) => {
 
   const response = {
     respuesta: books
+  };
+  return res.send(response);
+});
+
+router.get("/country/:country", (req, res) => {
+
+  const books = data.dataLibrary.books.filter(book => book.distributedCountries.includes(req.params.country))
+
+  const response = {
+    data: books,
   };
   return res.send(response);
 });
