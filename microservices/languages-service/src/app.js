@@ -7,8 +7,10 @@ const locations = require("../routes/locations");
 // Crea una instancia de la aplicación Express
 const app = express();
 
+
 // Agrega las rutas de la gestión de ubicaciones a la aplicación en la ruta /api/v2/countries
-app.use("/api/v2/countries", locations);
+app.use("/api/v2/languages", locations);
+
 
 // Exporta la aplicación para ser utilizada en otros módulos
 module.exports = app;

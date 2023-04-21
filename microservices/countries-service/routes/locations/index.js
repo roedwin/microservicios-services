@@ -46,7 +46,6 @@ router.get("/authorCountry/:capital", async(req, res) => {
   return res.send(response);
 });
 
-
 router.get("/distributedBooks/:capital", async(req, res) => {
   const capital = req.params.capital;
   const country = Object.values(data.dataLibrary.countries).find(obj => obj.capital === capital);
@@ -57,6 +56,14 @@ router.get("/distributedBooks/:capital", async(req, res) => {
   }
   return res.send(response);
 });
+
+router.get("/language/:codigo",(req, res) => {
+  const country = Object.values(data.dataLibrary.countries).filter(obj => obj.languages.includes(req.params.codigo));
+  const response = {
+    respuesta: country
+  }
+  return res.send(response);
+})
 
 // Exportamos el router
 module.exports = router;

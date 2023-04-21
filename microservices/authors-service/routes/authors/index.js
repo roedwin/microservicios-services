@@ -59,12 +59,16 @@ router.get("/author/:name", (req, res) => {
   return res.send(response);
 });
 
-router.get("/country/:country", (req, res) => {
+router.get("/country/:countries", (req, res) => {
 
-  const author = data.dataLibrary.authors.filter(author => author.country.includes(req.params.country))
+  //const author = data.dataLibrary.authors.filter(author => author.country.includes(req.params.country))
+  const countries = req.params.countries.split(",");
+  const authors = data.dataLibrary.authors.filter(author => {
+    return countries.some(country => author.country.includes(country));
+  });
 
   const response = {
-    data: author,
+    data: authors,
   };
   return res.send(response);
 });

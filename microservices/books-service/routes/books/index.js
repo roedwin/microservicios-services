@@ -105,15 +105,21 @@ router.get("/equalYears", async(req, res) => {
   return res.send(response);
 });
 
-router.get("/country/:country", (req, res) => {
+router.get("/country/:countries", (req, res) => {
 
-  const books = data.dataLibrary.books.filter(book => book.distributedCountries.includes(req.params.country))
+  //const books = data.dataLibrary.books.filter(book => book.distributedCountries.includes(req.params.country))
+  const countries = req.params.countries.split(",");
+  const books = data.dataLibrary.books.filter(book => {
+    return countries.some(country => book.distributedCountries.includes(country));
+  });
 
   const response = {
     data: books,
   };
   return res.send(response);
 });
+
+
 
 module.exports = router; // exporta el enrutador de Express para su uso en otras partes de la aplicación
 
