@@ -4,4 +4,4 @@ WORKDIR /app
 RUN npm install
 ENV PORT 4000
 EXPOSE 4000
-ENTRYPOINT ["npm", "run", "dev"]
+ENTRYPOINT ["npm", "start"]
