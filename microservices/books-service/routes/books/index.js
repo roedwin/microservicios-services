@@ -106,8 +106,6 @@ router.get("/equalYears", async(req, res) => {
 });
 
 router.get("/country/:countries", (req, res) => {
-
-  //const books = data.dataLibrary.books.filter(book => book.distributedCountries.includes(req.params.country))
   const countries = req.params.countries.split(",");
   const books = data.dataLibrary.books.filter(book => {
     return countries.some(country => book.distributedCountries.includes(country));

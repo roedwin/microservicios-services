@@ -47,11 +47,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/countries/:codigo", async(req, res) => {
-  const codigo = req.params.codigo;
+router.get("/countries/:lenguaje", async(req, res) => {
+  const lenguaje = req.params.lenguaje;
   const data = await fetch("http://languages:7000/api/v2/languages").then(resolve => resolve.json());
   
-  const languageArray = data.arregloDeObjetos.filter(language => codigo in language);
+  const languageArray = data.arregloDeObjetos.filter(language => Object.values(language).includes(lenguaje));
   const language = (languageArray.map(language => Object.keys(language)[0]))[0];
 
   const country = await fetch(`http://countries:5000/api/v2/countries/language/${language}`).then(resolve => resolve.json());
@@ -61,10 +61,11 @@ router.get("/countries/:codigo", async(req, res) => {
   return res.send(response);
 });
 
-router.get("/authors/:codigo", async(req, res) => {
-  const codigo = req.params.codigo;
+router.get("/authors/:lenguaje", async(req, res) => {
+  const lenguaje = req.params.lenguaje;
   const data = await fetch("http://languages:7000/api/v2/languages").then(resolve => resolve.json());
-  const languageArray = data.arregloDeObjetos.filter(language => codigo in language);
+
+  const languageArray = data.arregloDeObjetos.filter(language => Object.values(language).includes(lenguaje));
   const language = (languageArray.map(language => Object.keys(language)[0]))[0];
 
   const countries = await fetch(`http://countries:5000/api/v2/countries/language/${language}`).then(resolve => resolve.json());
@@ -79,10 +80,11 @@ router.get("/authors/:codigo", async(req, res) => {
   return res.send(response);
 });
 
-router.get("/books/:codigo", async(req, res) => {
-  const codigo = req.params.codigo;
+router.get("/books/:lenguaje", async(req, res) => {
+  const lenguaje = req.params.lenguaje;
   const data = await fetch("http://languages:7000/api/v2/languages").then(resolve => resolve.json());
-  const languageArray = data.arregloDeObjetos.filter(language => codigo in language);
+
+  const languageArray = data.arregloDeObjetos.filter(language => Object.values(language).includes(lenguaje));
   const language = (languageArray.map(language => Object.keys(language)[0]))[0];
 
   const countries = await fetch(`http://countries:5000/api/v2/countries/language/${language}`).then(resolve => resolve.json());

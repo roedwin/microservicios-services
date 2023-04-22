@@ -101,6 +101,13 @@ Este servicio se llama `books` y utiliza la imagen construida en el directorio `
 Este servicio se llama `country` y utiliza la imagen construida en el directorio `./microservices/country-service`.
 
 ```
+ languages:
+    build: ./microservices/languages-service
+```
+
+Este servicio se llama `languages` y utiliza la imagen construida en el directorio `./microservices/languages-service`.
+
+```
   nginx:
     image: nginx:latest
     ports:
@@ -112,6 +119,7 @@ Este servicio se llama `country` y utiliza la imagen construida en el directorio
       - users
       - books
       - country
+      - languages
 ```
 
 Este servicio se llama `nginx` y utiliza la imagen `nginx:latest` de Docker Hub. Se define un mapeo de puertos entre el puerto 8080 del contenedor y el puerto 8080 de la máquina host. También se define un volumen que vincula el archivo `nginx.conf` en el directorio actual con el archivo de configuración de nginx en el contenedor. Por último, se especifica que `nginx` depende de los servicios `monolithic`, `users`, `books` y `country`.

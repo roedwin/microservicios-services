@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "6f92cbaa-182f-4774-b976-2b969d94ab96",
+		"name": "Microservicios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13558089"
+	},
+	"item": [
+		{
+			"name": "Listar libros",
+			"item": [
+				{
+					"name": "Busqueda por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/books/author/69",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"books",
+								"author",
+								"69"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda entre annios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/books/betYears?primerAnnio=1900&ultimoAnnio=1930",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"books",
+								"betYears"
+							],
+							"query": [
+								{
+									"key": "primerAnnio",
+									"value": "1900"
+								},
+								{
+									"key": "ultimoAnnio",
+									"value": "1930"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "annios menores a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/books/minusYears?annio=1900",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"books",
+								"minusYears"
+							],
+							"query": [
+								{
+									"key": "annio",
+									"value": "1900"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "annios mayores a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/books/plusYears?annio=1900",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"books",
+								"plusYears"
+							],
+							"query": [
+								{
+									"key": "annio",
+									"value": "1900"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iguales a",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/books/equalYears?annio=1609",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"books",
+								"equalYears"
+							],
+							"query": [
+								{
+									"key": "annio",
+									"value": "1609"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listar paises",
+			"item": [
+				{
+					"name": "Busqueda por capital",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/countries/country?capital=London",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"countries",
+								"country"
+							],
+							"query": [
+								{
+									"key": "capital",
+									"value": "London"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda por capital y autores del pais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/countries/authorCountry/London",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"countries",
+								"authorCountry",
+								"London"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda por capital y libros por pais",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/countries/distributedBooks/Saint John's",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"countries",
+								"distributedBooks",
+								"Saint John's"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Languages",
+			"item": [
+				{
+					"name": "Listar Lenguajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/languages/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"languages",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda de paises por lenguaje",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/languages/countries/German",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"languages",
+								"countries",
+								"German"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda de autores por lenguaje y paises",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/languages/authors/German",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"languages",
+								"authors",
+								"German"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda de Libros por lenguaje",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v2/languages/books/German",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"languages",
+								"books",
+								"German"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
